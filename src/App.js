@@ -37,13 +37,15 @@ function App() {
     const thisSpy = randomNumberInRange(0, players.length-1);
 
     const newPlayers = [...players];
-    players.map((player) => {
+
+    for(const player of newPlayers) {
       if(player.id === thisSpy) {
         newPlayers[player.id] = {id: player.id, playerName: player.playerName, playerRole: "Espião", playerGoal: "Encontrar o elemento de estudo e não ser detectado"};
       } else {
         newPlayers[player.id] = {id: player.id, playerName: player.playerName, playerRole: "Químico", playerGoal: "Proteger o elemento de estudo e identificar o espião"};
       }
-    })
+    }
+
     setPlayers(newPlayers);
     setCurrentShowingPlayer(0);
     setIsPlaying(true);
