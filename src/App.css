@@ -1,7 +1,12 @@
 .App {
   text-align: center;
   height: 100vh;
-  background-color: #9BBACB;
+  /* background-color: #9BBACB; */
+  background: rgb(155,186,203);
+  background: -moz-linear-gradient(126deg, rgba(155,186,203,1) 0%, rgba(109,150,164,0.396796218487395) 69%, rgba(155,186,203,1) 100%);
+  background: -webkit-linear-gradient(126deg, rgba(155,186,203,1) 0%, rgba(109,150,164,0.396796218487395) 69%, rgba(155,186,203,1) 100%);
+  background: linear-gradient(126deg, rgba(155,186,203,1) 0%, rgba(109,150,164,0.396796218487395) 69%, rgba(155,186,203,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9bbacb",endColorstr="#9bbacb",GradientType=1);
 }
 
 .App-logo {

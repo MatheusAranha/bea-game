@@ -82,22 +82,22 @@ function App() {
         alignItems="center"
         sx={{ height: '100%' }}
       >
-        <Typography variant="h5" gutterBottom style={{ position: 'absolute', top: '10vh' }}>Tabela Gamer</Typography>
+        <Typography variant="h3" sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }} gutterBottom style={{ position: 'absolute', top: '0vh', backgroundColor: 'white', width: '100%', padding: '10px', zIndex: '1000000000' }}>Tabela Gamer</Typography>
         {isPlaying ? 
           isShowingRoles ?
           <Card 
-            sx={{ minWidth: '90vw' }}
+            sx={{ minWidth: '90vw', maxHeight: '60vh', overflow: 'auto' }}
           >
             {showNextPlayerValues ? 
               <CardContent>
-                <Typography>{players[currentShowingPlayer].playerName}</Typography>
-                <Typography>{players[currentShowingPlayer].playerRole}</Typography>
-                <Typography>Sua missão:</Typography>
-                <Typography>{players[currentShowingPlayer].playerGoal}</Typography>
+                <Typography variant='h2' sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }}>{players[currentShowingPlayer].playerName}</Typography>
+                <Typography variant='h3' sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }} style={players[currentShowingPlayer].playerRole!== "Espião"? {color: '#14b0a6'} : {color: '#9b2626'}}>{players[currentShowingPlayer].playerRole}</Typography>
+                <Typography sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }}>Sua missão:</Typography>
+                <Typography sx={{ fontFamily: 'Monospace' }}>{players[currentShowingPlayer].playerGoal}</Typography>
                 {players[currentShowingPlayer].playerRole !== "Espião"?
                   <div>
-                    <Typography>Elemento estudado:</Typography>
-                    <Typography>{currentElement}</Typography>
+                    <Typography sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }}>Elemento estudado:</Typography>
+                    <Typography sx={{ fontFamily: 'Monospace', fontSize: '60px' }}>{currentElement}</Typography>
                   </div>
                     :
                   <div></div>
@@ -105,7 +105,7 @@ function App() {
               </CardContent>
               :
               <CardContent>
-                <Typography>{players[currentShowingPlayer].playerName}</Typography>
+                <Typography variant='h4' sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }}>{players[currentShowingPlayer].playerName}</Typography>
               </CardContent>
             }
             <CardActions>
@@ -126,10 +126,10 @@ function App() {
           </Card>
             :
           <Card 
-            sx={{ minWidth: '90vw' }}
+            sx={{ minWidth: '90vw', maxHeight: '60vh', overflow: 'auto' }}
           >
             <CardContent>
-              <Typography>Começou!</Typography>
+              <Typography sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }} >Começou!</Typography>
             </CardContent>
             <CardActions>
               <Grid
@@ -145,16 +145,16 @@ function App() {
           </Card>
             :
           <Card 
-            sx={{ minWidth: '90vw' }}
+            sx={{ minWidth: '90vw', maxHeight: '60vh', overflow: 'auto' }}
           >
             <CardContent>
-              <Typography variant="h5" gutterBottom>Jogadores:</Typography>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'Monospace' }} gutterBottom>Jogadores:</Typography>
               <List>
                 {players.map((player) => (
                   <ListItem
                     key={player.id}
                     secondaryAction={
-                      <IconButton edge="end" aria-label="delete" onClick={() => {setPlayers(players.filter((item) => item !== player))}}>
+                      <IconButton edge="end" aria-label="delete" onClick={() => {setPlayers(players.filter((item) => item !== player));players.length + 1 > 3 ? players.length + 1 < 8 ? setIsReady(false) : setIsReady(true) : setIsReady(true);}}>
                         <DeleteIcon />
                       </IconButton>
                     }
